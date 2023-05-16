@@ -5,7 +5,7 @@
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $db = "db_pkk";
+    $db = "pkk_nganjuk";
 
     $koneksi = mysqli_connect($host, $user, $pass, $db) or die("Database MYSQL Tidak Terhubung");
 ?>

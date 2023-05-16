@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // $rows = mysqli_fetch_row($queryId);
         // $idPembeli = $rows[0];
         // $koneksi->query("INSERT INTO alamat VALUES(NULL, '$provinsi','$kota', '$kecamatan', '$kelurahan', '$address', '$idPembeli')");
-        $result = $koneksi->query("SELECT * FROM user WHERE no_whatsapp = '$no_whatsapp' AND password = '$password'");
+        $result = $koneksi->query("SELECT * FROM penggunas WHERE no_whatsapp = '$no_whatsapp' AND password = '$password'");
         $check = mysqli_affected_rows($koneksi);
         if ($check > 0) {
             // while ($row = mysqli_fetch_object($result)) {
