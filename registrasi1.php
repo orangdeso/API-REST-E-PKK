@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $koneksi->autocommit(false);
     try {
-        $koneksi->query("INSERT INTO user VALUES(NULL, '$nama_pengguna', '$nama_kec', '$no_whatsapp', 
+        $koneksi->query("INSERT INTO penggunas VALUES(NULL, '$nama_pengguna', '$nama_kec', '$no_whatsapp', 
             '$alamat', '$password', '$kode_otp', '$status')");
         // $queryId = $koneksi->query("SELECT MAX(idPembeli) FROM pembeli");
         // $rows = mysqli_fetch_row($queryId);
