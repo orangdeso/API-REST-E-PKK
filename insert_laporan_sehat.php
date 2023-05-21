@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $jml_anggota = $_POST['jml_anggota'];
     $jml_kartu = $_POST['jml_kartu'];
     $file = $_FILES['file'];
+    $user_id = $_POST['id_user'];
+    $tanggal = date('Y-m-d');
 
     // informasi file yang diupload
     if ($file != null) {
@@ -16,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fileTmpName = $file['tmp_name'];
         $destination = 'assets/Bidang_kesehatan/' . $fileName;
         move_uploaded_file($fileTmpName, $destination);
-        $query = "INSERT INTO laporan_bidang_kesehatan (kategori_laporan, jumlah_posyandu, jumlah_posyandu_iterasi, jumlah_klp, jumlah_anggota , jumlah_kartu_gratis, gambar_upload) 
-        VALUES ('$kategori', '$jml_posyandu', '$jml_posyandu_iterasi', '$jml_klp' , '$jml_anggota' , '$jml_kartu' , '$fileName')";
+        $query = "INSERT INTO laporan_bidang_kesehatan (kategori_laporan, jumlah_posyandu, jumlah_posyandu_iterasi, jumlah_klp, jumlah_anggota , jumlah_kartu_gratis, gambar_upload , id_user , status , tanggal) 
+        VALUES ('$kategori', '$jml_posyandu', '$jml_posyandu_iterasi', '$jml_klp' , '$jml_anggota' , '$jml_kartu' , '$fileName' , '$user_id' , 'Proses' , '$tanggal')";
 
         $result = mysqli_query($koneksi, $query);
         $check = mysqli_affected_rows($koneksi);
@@ -56,22 +58,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // echo 'Data Saja berhasil disimpan!';
     }
-
-    // $result = mysqli_query($konek, $queryPesanan);
-    // $check = mysqli_affected_rows($konek);
-
-
-
-    // if ($check > 0) {
-    //     $response['kode'] = 1;
-    //     $response['message'] = "Data Masuk";
-    //     $response['data'] = [
-    //         'id_pesanan' => $id_pesanan
-    //     ];
-    // } else {
-    //     $response['kode'] = 0;
-    //     $response['message'] = "Data Gagal Masuk";
-    // }
-    // echo json_encode($response);
-    // mysqli_close($konek);
 }
