@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $koneksi->commit();
         $response['kode'] = 1;
         $response['pesan'] = "Berhasil Membuat Akun";
-        $response['data'] = null;
+        //$response['data'] = null;
     } catch (Exception $e) {
         $response['kode'] = 0;
         $response['pesan'] = $e->getMessage();
-        $response['data'] = null;
+        //$response['data'] = null;
         $koneksi->rollback();
     }
     echo json_encode($response);
