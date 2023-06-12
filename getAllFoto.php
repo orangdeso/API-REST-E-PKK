@@ -2,11 +2,8 @@
 require("koneksi.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_user = $_POST['id_user'];
-
-    // $perintah = "SELECT DISTINCT * FROM galerys WHERE id_user =  '$id_user' ORDER BY id DESC";
-    $perintah = "SELECT * FROM `galerys` WHERE id_user = '$id_user' GROUP BY id ORDER BY id DESC";
-
+    $id = $_POST['id'];
+    $perintah = "SELECT gambar FROM galerys WHERE id =  '$id'";
     $eksekusi = mysqli_query($koneksi, $perintah);
     $cek = mysqli_affected_rows($koneksi);
 
@@ -16,13 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response["data"] = array();
 
         while ($ambil = mysqli_fetch_object($eksekusi)) {
-            $F["id"] = $ambil->id;
-            $F["judul"] = $ambil->judul;
             $F["gambar"] = $ambil->gambar;
-            $F["status"] = $ambil->status;
-            $F["tanggal"] = $ambil->tanggal;
-            $F["id_user"] = $ambil->id_user;
-
             array_push($response["data"], $F);
         }
     } else {
