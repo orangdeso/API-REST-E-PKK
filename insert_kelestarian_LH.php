@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fileTmpName = $file['tmp_name'];
         $destination = 'assets/Bidang_LingkunganHidup/' . $fileName;
         move_uploaded_file($fileTmpName, $destination);
-        $query = "INSERT INTO laporan_kelestarian_pangan (jamban, spal, tps, mck, pdam, sumur , dll, gambar_upload , id_user,status,tanggal) 
+        $query = "INSERT INTO laporan_kelestarian_lingkungan_hidup (jamban, spal, tps, mck, pdam, sumur , dll, gambar_upload , id_user,status,tanggal) 
         VALUES ('$getJamban', '$getSpal', '$getTps' , '$getMCK', '$getPdam' , '$getSumur' , '$getDll' , '$fileName' , '$user_id','Proses','$tanggal')";
 
         $result = mysqli_query($koneksi, $query);
