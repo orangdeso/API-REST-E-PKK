@@ -3,7 +3,8 @@ require("koneksi.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idUser = $_POST['id_user'];
-    $perintah = "SELECT * FROM laporan_kelestarian_pangan WHERE id_user = '$idUser'";
+    $perintah = "SELECT * FROM laporan_kelestarian_lingkungan_hidup WHERE id_user = '$idUser' 
+                ORDER BY id_kelpangan DESC";
     $eksekusi = mysqli_query($koneksi, $perintah);
     $cek = mysqli_affected_rows($koneksi);
 
